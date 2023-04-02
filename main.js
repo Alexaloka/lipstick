@@ -16,8 +16,7 @@ function setup(){
 }
 function draw(){
 image(video, 0, 0, 300, 300);
-image(lip_image,noseX - 15,noseY + `5,30,30);
-
+image(lip_image,noseX - 15,noseY )+ 5,30,30 ;
 }
 function take_snapshot()
 {

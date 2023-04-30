@@ -1,41 +1,20 @@
-noseX=0;
-noseY=0;
-
-function prelosd(){
-    lip_image = loadImage('https://i.postimg.cc/VkVzfxTH/Mouth-lips-clipart-web.png');
-
-}
-function setup(){
-    canvas = createCanvas(300,300);
+song = "";
+function setup()
+{
+    canvas = createCanvas(600, 500);
     canvas.center();
     video = createCapture(VIDEO);
-    video.size(300,300);
     video.hide();
-    poseNet = ml5.poseNet(video, modelLoaded);
-    poseNet.on('pose', gotPoses);
 }
-function draw(){
-image(video, 0, 0, 300, 300);
-image(lip_image,noseX - 15,noseY )+ 5,30,30 ;
-}
-function take_snapshot()
+function draw()
 {
-    save('myFilterImage.png');
+    image(video, 0, 0,  600, 500);
 }
-function modelLoaded()
+function preload()
 {
-    console.log('PoseNet Is Initialized');
+    song = loadSound("music.mp3");
 }
-function gotPoses(results)
+function play()
 {
-    if(results.length > 0)
-    {
-        console.log(results);
-        noseX = results[0].pose.nose.x;
-        noseY = results[0].pose.nose.y;
-
-        console.log('nose x = ' + results[0].pose.nose.x);
-        console.log('nose y = ' + results[0].pose.nose.y);
-
-    }
-}    
+    song.play();
+}
